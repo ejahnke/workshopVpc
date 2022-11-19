@@ -13,7 +13,7 @@ import * as ecs_patterns from "aws-cdk-lib/aws-ecs-patterns";
 export class MyVpcmohApplicationStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-
+    /*
     // This creates a new CodeCommit repository called 'WorkshopRepo'
     const repo = new codecommit.Repository(this, 'WorkshopVPCRepo', {
         repositoryName: "WorkshopVPCRepo"
@@ -27,7 +27,7 @@ export class MyVpcmohApplicationStack extends cdk.Stack {
         commands: ['npm ci', 'npm run build', 'npx cdk synth']
       })
     });
-    
+    */
     //after initial deployment
     
     const mohVpc = new ec2.Vpc(this, "MOHVpc", {
