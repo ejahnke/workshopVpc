@@ -54,6 +54,7 @@ export class MyVpcmohApplicationStack extends cdk.Stack {
       }],
     });
     
+    /*
     const cluster = new ecs.Cluster(this, "MyVpcCluster", {
       vpc: mohVpc
     });
@@ -82,7 +83,7 @@ export class MyVpcmohApplicationStack extends cdk.Stack {
       targetUtilizationPercent: 50,
     });
     
-    
+    */
     
     const clusterCustomImage = new ecs.Cluster(this, "MyVpcClusterCustomImage", {
       vpc: mohVpc
