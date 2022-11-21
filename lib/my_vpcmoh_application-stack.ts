@@ -77,8 +77,41 @@ export class MyVpcmohApplicationStack extends cdk.Stack {
     scalableTargetCustomImage.scaleOnMemoryUtilization('MemoryScaling', {
       targetUtilizationPercent: 50,
     });
-  */
+  
+  
+    const clusterMyPayara = new ecs.Cluster(this, "MyVpcClusterMyPayara", {
+      vpc: mohVpc
+    });
+  
+    const loadBalancedFargateServiceMyPayara = new ecs_patterns.ApplicationLoadBalancedFargateService(this, "MyVpcFargateServiceMyPayara", {
+      cluster: clusterMyPayara, // Required
+      assignPublicIp: false, 
+      cpu: 256, // Default is 256
+      desiredCount: 2, // Default is 1
+      taskImageOptions: { image: ecs.ContainerImage.fromAsset("./MyPayaraImage"), containerPort: 8080 },
+      
+      taskSubnets: {subnetGroupName: "privateSubnets"},
+      memoryLimitMiB: 1024, // Default is 512
+      publicLoadBalancer: true // Default is true
+    });
     
+    loadBalancedFargateServiceMyPayara.targetGroup.configureHealthCheck({
+      port: "8080"
+    });
+    
+    const scalableTargetCustomMyPayara = loadBalancedFargateServiceMyPayara.service.autoScaleTaskCount({
+      minCapacity: 1,
+      maxCapacity: 20,
+    });
+    
+    scalableTargetCustomMyPayara.scaleOnCpuUtilization('CpuScaling', {
+      targetUtilizationPercent: 50,
+    });
+    
+    scalableTargetCustomMyPayara.scaleOnMemoryUtilization('MemoryScaling', {
+      targetUtilizationPercent: 50,
+    });
+    */
     
   }
 }
