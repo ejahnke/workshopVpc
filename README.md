@@ -26,6 +26,7 @@ git clone https://github.com/ejahnke/workshopVpc.git
 6. update/workshopVpc/bin/my_vpcmoh_application.ts with your current AWS account number and region
 7. navigate into the recently cloned folder workshopVpc and install required libraries
 ```
+cd workshopVpc
 npm install aws-cdk-lib
 ```
 8. bootstrap the AWS account for CDK deployments
