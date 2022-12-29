@@ -1,3 +1,14 @@
+/*
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+DO NOT deploy this code for any kind of production purposes
+
+*/
+
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as codecommit from 'aws-cdk-lib/aws-codecommit';
